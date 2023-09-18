@@ -2,7 +2,8 @@
 
 set -euo pipefail
 
-pytest -vv
-
 cd docs
 make doctest
+
+cd ..
+pytest -vv

@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from abc import ABC
-from typing import Generic
+from typing import Generic, cast
 
 from vecked.types import TNumeric
 
@@ -33,6 +33,12 @@ class Vector2(ABC, Generic[TNumeric]):
     ) -> None:
         self._x: TNumeric = x
         self._y: TNumeric = y
+
+    def __abs__(self) -> Vector2[TNumeric]:
+        return self.__class__(
+            cast(TNumeric, abs(self._x)),
+            cast(TNumeric, abs(self._y)),
+        )
 
     def __eq__(self, other: object) -> bool:
         if other is None:
@@ -111,3 +117,33 @@ class Vector2(ABC, Generic[TNumeric]):
         """
 
         return self._y
+
+    def reflect_across(self, origin: Vector2[TNumeric]) -> Vector2[TNumeric]:
+        """
+        Reflects this vector across another in both dimensions.
+        """
+
+        return self.__class__(
+            origin.x - (self._x - origin.x),  # type: ignore
+            origin.y - (self._y - origin.y),  # type: ignore
+        )
+
+    def reflect_horizontally(self, x: TNumeric) -> Vector2[TNumeric]:
+        """
+        Reflects this vector across a vertical mirror.
+        """
+
+        return self.__class__(
+            x - (self._x - x),  # type: ignore
+            self._y,
+        )
+
+    def reflect_vertically(self, y: TNumeric) -> Vector2[TNumeric]:
+        """
+        Reflects this vector across a horizontal mirror.
+        """
+
+        return self.__class__(
+            self._x,
+            y - (self._y - y),  # type: ignore
+        )

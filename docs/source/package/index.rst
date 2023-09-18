@@ -6,4 +6,5 @@ These pages describe the package's modules and classes.
 .. toctree::
     :titlesonly:
 
+    functions
     vector2

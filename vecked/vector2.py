@@ -76,7 +76,6 @@ class Vector2(Generic[TNumeric]):
             distance_between(a[1], b[1]),
         )
 
-
     def distance_to(
         self,
         other: AnyVector2,

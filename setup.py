@@ -41,9 +41,11 @@ setup(
     name="vecked",
     packages=[
         "vecked",
+        "vecked.vector2",
     ],
     package_data={
         "vecked": ["py.typed"],
+        "vecked.vector2": ["py.typed"],
     },
     python_requires=">=3.11",
     url="https://github.com/cariad/vecked",

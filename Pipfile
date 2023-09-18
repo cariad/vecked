@@ -11,6 +11,8 @@ mypy = "*"
 pytest = "*"
 pytest-cov = "*"
 shellcheck-py = "*"
+sphinx = "*"
+sphinx-rtd-theme = "*"
 twine = "*"
 yamllint = "*"
 
@@ -21,5 +23,7 @@ python_version = "3.11"
 
 [scripts]
 build = "./scripts/build.sh"
+docs = "./scripts/build-docs.sh"
+"docs:serve" = "python -m http.server --directory docs/build/html/"
 lint = "./scripts/lint.sh"
 test = "./scripts/test.sh"

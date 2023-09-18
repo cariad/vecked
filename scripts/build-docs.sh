@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-pytest -vv
-
 cd docs
+rm -rf build
 make doctest
+make html

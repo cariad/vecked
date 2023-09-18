@@ -23,6 +23,12 @@ class Vector2f(Vector2[float]):
 
         raise ValueError("cannot multiply %s by %s" % (repr(self), repr(other)))
 
+    def __sub__(self, other: object) -> Vector2f:
+        if isinstance(other, Vector2):
+            return self.subtract_vector2(other)
+
+        raise ValueError("cannot subtract %s from %s" % (repr(other), repr(self)))
+
     def add_vector2(self, length: Vector2[float | int]) -> Vector2f:
         """
         Returns the addition of this vector to another.
@@ -52,4 +58,14 @@ class Vector2f(Vector2[float]):
         return self.__class__(
             self._x * length.x,
             self._y * length.y,
+        )
+
+    def subtract_vector2(self, length: Vector2[float | int]) -> Vector2f:
+        """
+        Returns the subtraction of a two-dimensional vector from this.
+        """
+
+        return Vector2f(
+            self._x - length.x,
+            self._y - length.y,
         )

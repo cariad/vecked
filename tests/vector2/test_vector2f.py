@@ -4,6 +4,34 @@ from vecked import Vector2f, Vector2i
 
 
 @mark.parametrize(
+    "vector, expect",
+    [
+        (
+            Vector2f(2.2, 3.3),
+            Vector2f(2.2, 3.3),
+        ),
+        (
+            Vector2f(-2.2, 3.3),
+            Vector2f(2.2, 3.3),
+        ),
+        (
+            Vector2f(2.2, -3.3),
+            Vector2f(2.2, 3.3),
+        ),
+        (
+            Vector2f(-2.2, -3.3),
+            Vector2f(2.2, 3.3),
+        ),
+    ],
+)
+def test_abs(
+    vector: Vector2f,
+    expect: Vector2f,
+) -> None:
+    assert abs(vector) == expect
+
+
+@mark.parametrize(
     "a, b, expect",
     [
         (
@@ -76,6 +104,73 @@ def test_mul__invalid(other: object, expect: str) -> None:
         _ = Vector2f(0, 0) * other
 
     assert str(ex.value) == expect
+
+
+@mark.parametrize(
+    "vector, origin, expect",
+    [
+        (
+            Vector2f(0, 0),
+            Vector2f(0, 0),
+            Vector2f(0, 0),
+        ),
+        (
+            Vector2f(-1, -1),
+            Vector2f(0, 0),
+            Vector2f(1, 1),
+        ),
+        (
+            Vector2f(-4, 3),
+            Vector2f(1, 2),
+            Vector2f(6, 1),
+        ),
+    ],
+)
+def test_reflect_across(
+    vector: Vector2f,
+    origin: Vector2f,
+    expect: Vector2f,
+) -> None:
+    result = vector.reflect_across(origin)
+    assert result == expect
+
+
+@mark.parametrize(
+    "vector, x, expect",
+    [
+        (Vector2f(0, 0), 0, Vector2f(0, 0)),
+        (Vector2f(0, 0), 1, Vector2f(2, 0)),
+        (Vector2f(-2, 0), 1, Vector2f(4, 0)),
+        (Vector2f(4, 0), 1, Vector2f(-2, 0)),
+        (Vector2f(2.5, 0), 3.5, Vector2f(4.5, 0)),
+    ],
+)
+def test_reflect_horizontally(
+    vector: Vector2f,
+    x: float,
+    expect: Vector2f,
+) -> None:
+    result = vector.reflect_horizontally(x)
+    assert result == expect
+
+
+@mark.parametrize(
+    "vector, y, expect",
+    [
+        (Vector2f(0, 0), 0, Vector2f(0, 0)),
+        (Vector2f(0, 0), 1, Vector2f(0, 2)),
+        (Vector2f(0, -2), 1, Vector2f(0, 4)),
+        (Vector2f(0, 4), 1, Vector2f(0, -2)),
+        (Vector2f(0, 2.5), 3.5, Vector2f(0, 4.5)),
+    ],
+)
+def test_reflect_vertically(
+    vector: Vector2f,
+    y: float,
+    expect: Vector2f,
+) -> None:
+    result = vector.reflect_vertically(y)
+    assert result == expect
 
 
 @mark.parametrize(

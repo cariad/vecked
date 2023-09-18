@@ -7,9 +7,6 @@ from vecked.vector2.vector2f import Vector2f
 
 
 class Vector2i(Vector2[int]):
-    def __abs__(self) -> Vector2i:
-        return Vector2i(abs(self._x), abs(self._y))
-
     @overload
     def __add__(self, other: Vector2[float]) -> Vector2f:
         ...  # pragma: no cover

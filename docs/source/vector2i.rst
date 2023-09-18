@@ -1,8 +1,8 @@
-Vector2
-=======
+Vector2i
+========
 
 .. py:module:: vecked
     :noindex:
 
-.. autoclass:: Vector2
+.. autoclass:: Vector2i
      :members:

@@ -1,13 +1,6 @@
 from typing import TypeVar
 
-AnyNumber = int | float
-
-TNumeric = TypeVar("TNumeric", bound=AnyNumber)
+TNumeric = TypeVar("TNumeric", bound=float | int)
 """
 Any numeric type.
-"""
-
-TVector = tuple[TNumeric, TNumeric]
-"""
-Any numeric vector type.
 """

@@ -1,13 +1,11 @@
-from vecked.numbers import distance_between
-from vecked.types import AnyNumber, TNumeric, TVector
-from vecked.vector2 import Vector2
+from vecked.types import TNumeric
+from vecked.vector2 import Vector2, Vector2f, Vector2i
 from vecked.version import get_version
 
 __all__ = [
-    "AnyNumber",
     "TNumeric",
-    "TVector",
     "Vector2",
-    "distance_between",
+    "Vector2f",
+    "Vector2i",
     "get_version",
 ]

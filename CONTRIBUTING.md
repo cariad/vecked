@@ -1,4 +1,4 @@
-# Contributing to Fract
+# Contributing to Vecked
 
 Please raise all bug reports and feature requests at [github.com/cariad/vecked/issues](https://github.com/cariad/vecked/issues).
 

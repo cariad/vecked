@@ -1,9 +1,17 @@
 {
   "cSpell.words": [
+    "autoclass",
     "cimg",
     "codecov",
+    "genindex",
+    "noindex",
     "Pipfile",
-    "vecked",
-    "venv"
+    "testcode",
+    "testoutput",
+    "titlesonly",
+    "toctree",
+    "Vecked",
+    "venv",
+    "viewcode"
   ]
 }

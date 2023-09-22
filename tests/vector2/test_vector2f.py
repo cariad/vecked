@@ -69,6 +69,38 @@ def test_add__invalid(other: object, expect: str) -> None:
 
 
 @mark.parametrize(
+    "vector, a, b, expect",
+    [
+        (
+            Vector2f(1, 1),
+            Vector2f(0, 0),
+            Vector2f(2, 2),
+            Vector2f(0.5, 0.5),
+        ),
+        (
+            Vector2f(0, 0),
+            Vector2f(0, 0),
+            Vector2f(2, 2),
+            Vector2f(0, 0),
+        ),
+        (
+            Vector2f(-1, 4),
+            Vector2f(0, 0),
+            Vector2f(2, 2),
+            Vector2f(-0.5, 2),
+        ),
+    ],
+)
+def test_inverse_lerp(
+    vector: Vector2f,
+    a: Vector2f,
+    b: Vector2f,
+    expect: Vector2f,
+) -> None:
+    assert vector.inverse_lerp(a, b) == expect
+
+
+@mark.parametrize(
     "a, b, expect",
     [
         (

@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from vecked.logging import logger
+from vecked.numbers import inverse_lerp, lerp
 from vecked.vector2.vector2 import Vector2
 
 
@@ -38,6 +40,48 @@ class Vector2f(Vector2[float]):
             self._x + length.x,
             self._y + length.y,
         )
+
+    def inverse_lerp(self, a: Vector2f, b: Vector2f) -> Vector2f:
+        """
+        Gets the normalised distance of this vector from :code:`a` in the
+        direction of :code:`b`.
+        """
+
+        result = Vector2f(
+            inverse_lerp(a.x, b.x, self._x),
+            inverse_lerp(a.y, b.y, self._y),
+        )
+
+        logger.debug(
+            "%s is inverse lerp %s between %s and %s",
+            self,
+            result,
+            a,
+            b,
+        )
+
+        return result
+
+    def lerp(self, a: Vector2f, b: Vector2f) -> Vector2f:
+        """
+        Gets the value this normalised vector's distance between :code:`a`
+        towards :code:`b`.
+        """
+
+        result = Vector2f(
+            lerp(a.x, b.x, self._x),
+            lerp(a.y, b.y, self._y),
+        )
+
+        logger.debug(
+            "%s is lerp %s between %s and %s",
+            self,
+            result,
+            a,
+            b,
+        )
+
+        return result
 
     def multiply_length(self, length: float | int) -> Vector2f:
         """

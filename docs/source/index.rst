@@ -30,6 +30,8 @@ You can find me at `cariad.earth <https://cariad.earth>`_, `github.com/cariad <h
     :titlesonly:
 
     self
+    functions
+    region2f
     vector2f
     vector2i
     genindex

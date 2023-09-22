@@ -41,10 +41,12 @@ setup(
     name="vecked",
     packages=[
         "vecked",
+        "vecked.region2",
         "vecked.vector2",
     ],
     package_data={
         "vecked": ["py.typed"],
+        "vecked.region2": ["py.typed"],
         "vecked.vector2": ["py.typed"],
     },
     python_requires=">=3.11",

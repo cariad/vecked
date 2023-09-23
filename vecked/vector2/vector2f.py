@@ -41,6 +41,24 @@ class Vector2f(Vector2[float]):
             self._y + length.y,
         )
 
+    def clamp(
+        self,
+        minimum: float | None = None,
+        maximum: float | None = None,
+    ) -> Vector2f:
+        """
+        Returns a copy of this vector with each length clamped to
+        :code:`minimum` and :code:`maximum`.
+        """
+
+        x = self._x if minimum is None else min(self._x, minimum)
+        y = self._y if minimum is None else min(self._y, minimum)
+
+        x = x if maximum is None else max(x, maximum)
+        y = y if maximum is None else max(y, maximum)
+
+        return Vector2f(x, y)
+
     def inverse_lerp(self, a: Vector2f, b: Vector2f) -> Vector2f:
         """
         Gets the normalised distance of this vector from :code:`a` in the

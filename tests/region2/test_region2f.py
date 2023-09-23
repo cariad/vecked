@@ -4,6 +4,106 @@ from vecked import Region2f, Vector2f
 
 
 @mark.parametrize(
+    "point, expect",
+    [
+        (
+            Vector2f(0, 0),
+            Region2f(
+                Vector2f(0, 0),
+                Vector2f(5, 5),
+            ),
+        ),
+        (
+            Vector2f(2, 3),
+            Region2f(
+                Vector2f(2, 3),
+                Vector2f(3, 2),
+            ),
+        ),
+        (
+            Vector2f(3, 2),
+            Region2f(
+                Vector2f(3, 2),
+                Vector2f(2, 3),
+            ),
+        ),
+        (
+            Vector2f(2, 2),
+            Region2f(
+                Vector2f(2, 2),
+                Vector2f(3, 3),
+            ),
+        ),
+        (
+            Vector2f(3, 3),
+            Region2f(
+                Vector2f(3, 3),
+                Vector2f(2, 2),
+            ),
+        ),
+        (
+            Vector2f(4, 4),
+            Region2f(
+                Vector2f(3, 3),
+                Vector2f(2, 2),
+            ),
+        ),
+        (
+            Vector2f(5, 5),
+            Region2f(
+                Vector2f(3, 3),
+                Vector2f(2, 2),
+            ),
+        ),
+        (
+            Vector2f(5, 6),
+            Region2f(
+                Vector2f(3, 3),
+                Vector2f(2, 3),
+            ),
+        ),
+        (
+            Vector2f(5, 7),
+            Region2f(
+                Vector2f(3, 3),
+                Vector2f(2, 4),
+            ),
+        ),
+        (
+            Vector2f(2, 7),
+            Region2f(
+                Vector2f(2, 3),
+                Vector2f(3, 4),
+            ),
+        ),
+        (
+            Vector2f(6, 5),
+            Region2f(
+                Vector2f(3, 3),
+                Vector2f(3, 2),
+            ),
+        ),
+        (
+            Vector2f(6, 6),
+            Region2f(
+                Vector2f(3, 3),
+                Vector2f(3, 3),
+            ),
+        ),
+    ],
+)
+def test_accommodate(point: Vector2f, expect: Region2f) -> None:
+    region = Region2f(
+        Vector2f(3, 3),
+        Vector2f(2, 2),
+    )
+
+    result = region.accommodate(point)
+
+    assert result == expect
+
+
+@mark.parametrize(
     "vector, expect",
     [
         (Vector2f(2, 2), Vector2f(3, 3)),

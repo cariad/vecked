@@ -132,6 +132,24 @@ def test_interpolate(vector: Vector2f, expect: Vector2f) -> None:
     assert result == expect
 
 
+def test_position() -> None:
+    region = Region2f(
+        Vector2f(1, 2),
+        Vector2f(3, 4),
+    )
+
+    assert region.position == Vector2f(1, 2)
+
+
+def test_size() -> None:
+    region = Region2f(
+        Vector2f(1, 2),
+        Vector2f(3, 4),
+    )
+
+    assert region.size == Vector2f(3, 4)
+
+
 def test_str() -> None:
     region = Region2f(
         Vector2f(1, 2),
@@ -139,6 +157,17 @@ def test_str() -> None:
     )
 
     assert str(region) == "(1, 2)x(3, 4)"
+
+
+@mark.parametrize(
+    "region, expect",
+    [
+        (Region2f(Vector2f(1, 2), Vector2f(3, 4)), 2),
+        (Region2f(Vector2f(1, 2), Vector2f(3, -4)), -2),
+    ],
+)
+def test_top(region: Region2f, expect: float) -> None:
+    assert region.top == expect
 
 
 def test_upside_down() -> None:

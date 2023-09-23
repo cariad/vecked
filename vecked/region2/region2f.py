@@ -84,6 +84,14 @@ class Region2f:
             into._position + into._size,
         )
 
+    @property
+    def position(self) -> Vector2f:
+        """
+        Position.
+        """
+
+        return self._position
+
     def reflect_vertically(self, y: float = 0) -> Region2f:
         """
         Reflects this region across a horizontal mirror.
@@ -93,6 +101,22 @@ class Region2f:
             self._position.reflect_vertically(y),
             Vector2f(self._size.x, -self._size.y),
         )
+
+    @property
+    def size(self) -> Vector2f:
+        """
+        Size.
+        """
+
+        return self._size
+
+    @property
+    def top(self) -> float:
+        """
+        Top edge.
+        """
+
+        return self._position.y + min(self._size.y, 0)
 
     def translate(self, distance: Vector2f) -> Region2f:
         """

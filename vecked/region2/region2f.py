@@ -29,7 +29,7 @@ class Region2f:
             )
 
             interpolated = region.interpolate(
-                Vector2f(2, 2),
+                Vector2f(2.5, 2.5),
                 Region2f(
                     Vector2f(10, 10),
                     Vector2f(20, 22),
@@ -41,13 +41,13 @@ class Region2f:
         .. testoutput::
             :options: +NORMALIZE_WHITESPACE
 
-            interpolated = (15.0, 16.0)
+            interpolated = (20.0, 21.0)
         """
 
         return position.inverse_lerp(
             self._position,
-            self._size,
+            self._position + self._size,
         ).lerp(
             into._position,
-            into._size,
+            into._position + into._size,
         )

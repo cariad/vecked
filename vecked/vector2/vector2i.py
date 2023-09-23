@@ -84,6 +84,16 @@ class Vector2i(Vector2[int]):
             self._y + length.y,
         )
 
+    def reflect_vertically(self, y: int = 0) -> Vector2i:
+        """
+        Reflects this vector across a horizontal mirror.
+        """
+
+        return self.__class__(
+            self._x,
+            y - (self._y - y),
+        )
+
     def subtract_vector2f(self, length: Vector2[float]) -> Vector2f:
         """
         Returns the subtraction of a floating-point two-dimensional vector from

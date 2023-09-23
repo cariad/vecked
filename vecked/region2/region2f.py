@@ -84,6 +84,16 @@ class Region2f:
             into._position + into._size,
         )
 
+    def reflect_vertically(self, y: float = 0) -> Region2f:
+        """
+        Reflects this region across a horizontal mirror.
+        """
+
+        return self.__class__(
+            self._position.reflect_vertically(y),
+            Vector2f(self._size.x, -self._size.y),
+        )
+
     def translate(self, distance: Vector2f) -> Region2f:
         """
         Returns a copy of this region translated by :code:`distance`.
@@ -93,3 +103,10 @@ class Region2f:
             self._position + distance,
             self._size,
         )
+
+    def upside_down(self) -> Region2f:
+        """
+        Turns this region upside-down.
+        """
+
+        return self.reflect_vertically(self._position.y + (self._size.y / 2))

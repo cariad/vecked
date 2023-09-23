@@ -137,13 +137,3 @@ class Vector2(ABC, Generic[TNumeric]):
             x - (self._x - x),  # type: ignore
             self._y,
         )
-
-    def reflect_vertically(self, y: TNumeric) -> Vector2[TNumeric]:
-        """
-        Reflects this vector across a horizontal mirror.
-        """
-
-        return self.__class__(
-            self._x,
-            y - (self._y - y),  # type: ignore
-        )

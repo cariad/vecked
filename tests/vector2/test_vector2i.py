@@ -137,6 +137,24 @@ def test_mul__invalid(other: object, expect: str) -> None:
     assert str(ex.value) == expect
 
 
+@mark.parametrize(
+    "vector, y, expect",
+    [
+        (Vector2i(0, 0), 0, Vector2i(0, 0)),
+        (Vector2i(0, 0), 1, Vector2i(0, 2)),
+        (Vector2i(0, -2), 1, Vector2i(0, 4)),
+        (Vector2i(0, 4), 1, Vector2i(0, -2)),
+    ],
+)
+def test_reflect_vertically(
+    vector: Vector2i,
+    y: int,
+    expect: Vector2i,
+) -> None:
+    result = vector.reflect_vertically(y)
+    assert result == expect
+
+
 def test_repr() -> None:
     assert repr(Vector2i(3, 9)) == "Vector2i(3, 9)"
 

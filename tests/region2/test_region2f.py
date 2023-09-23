@@ -139,3 +139,17 @@ def test_str() -> None:
     )
 
     assert str(region) == "(1, 2)x(3, 4)"
+
+
+def test_upside_down() -> None:
+    region = Region2f(
+        Vector2f(1, 2),
+        Vector2f(3, 4),
+    )
+
+    result = region.upside_down()
+
+    assert result == Region2f(
+        Vector2f(1, 6),
+        Vector2f(3, -4),
+    )
